@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home';
+import LoginPage from './pages/login';
+import Shirts from './pages/shirts';
+import Splashes from './pages/splashes';
+import Sprays from './pages/sprays';
+import Shorts from './pages/shorts';
+import UpsDowns from './pages/ups_downs';
+import Nightwears from './pages/nightwears';
+import Cart from './pages/cart';
+import Profile from './pages/profile';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<LoginPage/>} path='/'/>
+        <Route element={<Cart/>} path='/cart'/>
+        <Route element={<Home/>} path='/home'/>
+        <Route element={<Shirts/>} path='/shirts'/>
+        <Route element={<Splashes/>} path='/splashes'/>
+        <Route element={<Sprays/>} path='/sprays'/>
+        <Route element={<Shorts/>} path='/shorts'/>
+        <Route element={<UpsDowns/>} path='/ups&downs'/>
+        <Route element={<Nightwears/>} path='/nightwears'/>
+        <Route element={<Profile/>} path='/profile'/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
