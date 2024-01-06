@@ -13,12 +13,12 @@ export default function Sidebar() {
     
     const currentcolor = (route) => {
         if (currentLocation === route) {
-            return 'bg-white text-[#11aaff] rounded-l-sm shadow-md';
+            return 'bg-white text-[#ffda73] rounded-l-sm shadow-md';
         }
     }
 
   return (
-        <div className='absolute top-0 bg-[#11aaffaa] text-white w-[20%] h-[100vh] pl-2 py-2 flex flex-col gap-[5px]'>
+        <div className='absolute top-0 bg-[#ffda73aa] text-white w-[20%] h-[100vh] pl-2 py-2 flex flex-col gap-[5px]'>
             <p className='text-white text-center text-[20px] font-bold'>Hello User</p>
             <Link to='/cart' className={` ${currentcolor('/cart')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
                 <FiShoppingCart className='w-[24px] h-[24px]' />

@@ -15,7 +15,7 @@ export default function LoginPage() {
             <title>Login to Fortune</title>
         </head>
         <div className='w-[100vw] h-[100vh] flex justify-center items-center'>
-            <form className='sm:w-[50%] w-full flex flex-col gap-[2em] p-[2em] bg-[#11aaffaa]'>
+            <form className='sm:w-[50%] w-full flex flex-col gap-[2em] p-[2em] bg-[##ffda73aa]'>
                 <label className='text-center text-white font-bold text-[24px] uppercase'>Login to Fortune</label>
                 <MyTextbox width='w-[100%]' type='text' label='Enter Username'/>
                 <MyTextbox width='w-[100%]' type='password' label='Enter Password'/>
