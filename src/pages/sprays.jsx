@@ -1,29 +1,33 @@
 import React from 'react'
 import Sidebar from '../components/sidebar'
-import { FiPlusCircle } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 export default function Sprays() {
-    const item = {name:'Item No', price:100, desc:'This is item description. This is item description. This is item description. This is item description. This is item description. This is item description. This is item description. This is item description. This is item description. This is item description. This is item description.', img:'/logo192.png'};
-  return (
+    const item = JSON.parse(localStorage.getItem('sprays'));
+    const navigate = useNavigate()
+
+    const handleDetails = (item) =>{
+        navigate('/details', {state:item})
+    }
+
+    return (
     <>
         <head>
             <title>Fortune-Sprays</title>
         </head>
-        <div className='bg-[#ffffffaa] w-[100vw] h-[100vh] pl-[21%] p-[1em] flex flex-col items-center justify-center gap-[30px] overflow-auto'>  
-            <img src={item.img} alt="Itme Pic" className='h-[60%]'/>
-            <p className='w-full'>
-                <p className='font-bold'>Name</p>
-                <p>{item.name}</p>
-            </p>
-            <p className='w-full'>
-                <p className='font-bold'>Price</p>
-                <p>Ghs {item.price}</p>
-            </p>
-            <p className='w-full'>
-                <p className='font-bold'>Description</p>
-                <p>{item.desc}</p>
-            </p>
-            <button className='flex gap-[5px] bg-[#0077b6] text-white uppercase font-bold hover:bg-[#11aaff] justify-center items-center p-2 w-fit mb-2  items-center rounded-sm'><FiPlusCircle /> Add to Cart</button>
+        <div className='bg-[#ffffffaa] w-[100vw] h-[100vh] sm:pl-[21%] sm:mt-0 mt-[40px] p-[1em] flex flex-col items-center justify-center gap-[30px] overflow-auto'>  
+            <div className='text-white grid sm:grid-cols-5 grid-cols-2 w-full h-full  gap-[10px]'>
+                {item.map((item)=>(
+                    <div className='relative p-1 h-[40vh] rounded-md shadow-md flex justify-center '>
+                        <img src={item.imageUrl} alt="Item Pic" className='w-full h-[80%] mt-[20px] rounded-[10px]' />
+                        <p className='absolute top-0 flex flex-row bg-black p-2 w-[100%] rounded-t-md items-center justify-between rounded-sm'>
+                            <p className='font-bold'>{item.name}</p>
+                            <p className='font-bold'><i>GHs {item.price}</i></p>
+                        </p>
+                        <button onClick={()=>handleDetails(item)} className='absolute flex gap-[5px] bottom-0 text-black px-[25px] uppercase font-bold bg-[#ffda73] hover:bg-[#11aaff] hover:text-white justify-center items-center p-2 w-fit mb-2  items-center rounded-sm'>View Details</button>
+                    </div>
+                ))}
+            </div>
         </div>
         <Sidebar/>
     </>

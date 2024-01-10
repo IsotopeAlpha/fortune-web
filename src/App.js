@@ -9,6 +9,7 @@ import UpsDowns from './pages/ups_downs';
 import Nightwears from './pages/nightwears';
 import Cart from './pages/cart';
 import Profile from './pages/profile';
+import Details from './pages/details';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route element={<UpsDowns/>} path='/ups&downs'/>
         <Route element={<Nightwears/>} path='/nightwears'/>
         <Route element={<Profile/>} path='/profile'/>
+        <Route element={<Details/>} path='/details'/>
       </Routes>
     </BrowserRouter>
   );

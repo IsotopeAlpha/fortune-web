@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/sidebar'
 import { FiArrowRight, FiMinusCircle } from 'react-icons/fi'
 import Swal from 'sweetalert2';
@@ -6,18 +6,10 @@ import { PiXCircle } from 'react-icons/pi';
 
 export default function Cart() {
 
-    const items= [{name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'},
-    {name:'Item No', price:100, desc:'This is item description', img:'/logo192.png'}]
+  const items = JSON.parse(localStorage.getItem('cart'))
   
+  useEffect(()=>{},[items])
+   
     var total = 0;
     const [checkout, setCheckout] = useState(false) 
 
@@ -31,10 +23,20 @@ export default function Cart() {
 
 
     const handleCheckout =()=>{
-      setCheckout(true)
+      if(items.length<0){
+        Swal.fire('Cart', 'Cart Is Empty, Add product to checkout!!', 'warning')
+      }else{
+        setCheckout(true)
+      }
     }
 
-    const handleDelete =()=>{
+    const handleDelete =(item)=>{
+      for(let i=0; i<items.length; i++){
+        if(items[i]._id === item._id){
+          const newItems = items.pop(items[i])
+          localStorage.setItem('cart', JSON.stringify(newItems));
+        }
+      }
       Swal.fire('Cart', 'Item Remove From Cart!!', 'success')
     }
 
@@ -48,17 +50,17 @@ export default function Cart() {
         <head>
             <title>Fortune-Cart</title>
         </head>
-        <div className='bg-[#ffffffaa] w-[100vw] h-[100vh] pl-[21%] p-[1em] flex flex-col gap-[30px] overflow-auto'>  
+        <div className='bg-[#ffffffaa] w-[100vw] h-[100vh] sm:pl-[21%] sm:mt-0 mt-[40px] p-[1em] flex flex-col gap-[30px] overflow-auto'>  
           {checkout===false?
-          <div className='w-full p-[20px] items-center text-white flex flex-col w-full h-full gap-[10px]'>
-                {items.map((item)=>(
+          <div className='w-full sm:p-[20px] items-center text-white flex flex-col w-full h-full gap-[10px]'>
+                {items.length<1?<div className='text-[24px] font-bold '>Nothing to display</div>:items.map((item)=>(
                     <div className='w-full p-1 h-[30vh] bg-white rounded-md flex items-center justify-evenly bg-white shadow-md'>
-                        <img src={item.img} alt="Item Pic" className='w-[40%] h-full' />
+                        <img src={item.imageUrl} alt="Item Pic" className='w-[20%] h-full' />
                         <p className='flex flex-col p-2 w-[100%] text-black'>
                             <p className='font-bold'>{item.name}</p>
                             <p className='font-bold'><i>GHs {item.price}</i></p>
                         </p>
-                        <button className='flex gap-[5px] bottom-0 text-[#0077b6] uppercase font-bold bg-[#ffffffee] hover:bg-[#11aaff] hover:text-white justify-center items-center p-2 w-fit mb-2  items-center rounded-sm' onClick={handleDelete}><FiMinusCircle/> Remove</button>
+                        <button className='flex gap-[5px] bottom-0 text-[#0077b6] uppercase font-bold bg-[#ffffffee] hover:bg-[#11aaff] hover:text-white justify-center items-center p-2 w-fit mb-2  items-center rounded-sm' onClick={()=>handleDelete(item)}><FiMinusCircle/> Remove</button>
                     </div>
                 ))}
                 <p className='text-black flex flex-row-reverse w-full font-bold text-[24px]'><i>{total}</i>Total: </p>    
