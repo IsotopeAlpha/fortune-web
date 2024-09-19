@@ -32,7 +32,7 @@ export default function Details() {
                 <p className='font-bold'>Description</p>
                 <p>{item.description}</p>
             </p>
-            <button onClick={()=>handleAdd(item)} className='flex gap-[5px] bg-[#0077b6] text-white uppercase font-bold hover:bg-[#11aaff] justify-center items-center p-2 w-fit mb-2  items-center rounded-sm'><FiPlusCircle /> Add to Cart</button>
+            <button onClick={()=>handleAdd(item)} className='flex gap-[5px] bg-blue-800 text-white uppercase font-bold hover:bg-[#11aaff] justify-center items-center p-2 w-fit mb-2  items-center rounded-sm'><FiPlusCircle /> Add to Cart</button>
         </div>
         <Sidebar/>
     </>

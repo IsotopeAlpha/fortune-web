@@ -15,9 +15,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<LoginPage/>} path='/'/>
         <Route element={<Cart/>} path='/cart'/>
-        <Route element={<Home/>} path='/home'/>
+        <Route element={<Home/>} path='/'/>
         <Route element={<Shirts/>} path='/shirts'/>
         <Route element={<Splashes/>} path='/splashes'/>
         <Route element={<Sprays/>} path='/sprays'/>

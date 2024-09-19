@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  background-image: url('../public/back.jpg');
-  background-size: auto;
+  background-image: url('../public/image.png');
+  background-size: contain;
   margin: 0;
   font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;

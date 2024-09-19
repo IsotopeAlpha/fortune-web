@@ -51,13 +51,13 @@ export default function Sidebar() {
   return (
     <>
     <div className='invisible sm:visible absolute top-0 bg-[#ffda73] text-black w-[20%] h-[100vh] pl-2 py-2 flex flex-col gap-[5px]'>
-            <p className='text-[#ffda73] bg-black text-center text-[20px] font-bold'>Hello <i>{name}</i></p>
+            <p className='text-[#ffda73] bg-black text-center text-[20px] font-bold'>Hello, <i>Welcome to 4tune</i></p>
             <Link to='/cart' className={`relative ${currentcolor('/cart')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
                 <FiShoppingCart className='w-[24px] h-[24px]' />
                 <div className='absolute right-[10px]  bg-red-600 w-[20px] h-[20px] text-white items-center justify-center flex font-bold rounded-full p-[5px]'>{cart.length<1?0:cart.length}</div>
                 <p className='pl-2'>Cart</p>
             </Link>
-            <Link to='/home' className={` ${currentcolor('/home')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
+            <Link to='/' className={` ${currentcolor('/')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
                 <MdOutlineDashboard className='w-[24px] h-[24px]' />
                 <p className='pl-2'>All Items</p>
             </Link>
@@ -88,10 +88,6 @@ export default function Sidebar() {
             <Link to='/profile' className={` ${currentcolor('/profile')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
                 <PiUserBold className='w-[24px] h-[24px]' />
                 <p className='pl-2'>My Profile</p>
-            </Link>
-            <Link to="/" className={` ${currentcolor("/")} ml-[10%] p-[4px] w-full flex items-center bottom-10  hover:bg-white hover:text-[#0077b6]`}>
-                <FiLogOut className="w-[24px] h-[24px]" />
-                <p className="pl-2">Logout</p>
             </Link>
         </div>
         {menuOpen && (
@@ -99,7 +95,7 @@ export default function Sidebar() {
                 style={customStyles}
                 onClose={menuHandler} isOpen={true} className="bg-black text-white w-[40%] ml-[60%]  p-2 flex flex-col items-end overflow-auto no-scrollbar">
                     <AiOutlineClose onClick={menuHandler}/>
-            <Link to='/home' className={` ${currentcolor('/home')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
+            <Link to='/' className={` ${currentcolor('/')} p-[1em] w-full flex items-center  hover:bg-white hover:text-[#0077b6]`}>
                 <MdOutlineDashboard className='w-[24px] h-[24px]' />
                 <p className='pl-2'>All Items</p>
             </Link>
@@ -131,15 +127,11 @@ export default function Sidebar() {
                 <PiUserBold className='w-[24px] h-[24px]' />
                 <p className='pl-2'>My Profile</p>
             </Link>
-            <Link to="/" className={` ${currentcolor("/")} ml-[10%] p-[4px] w-full flex items-center bottom-10  hover:bg-white hover:text-[#0077b6]`}>
-                <FiLogOut className="w-[24px] h-[24px]" />
-                <p className="pl-2">Logout</p>
-            </Link>
                     </ReactModal>
                     </div>)}                    
             <div className="flex fixed top-0 w-full h-[40px] bg-black sm:invisible visible header__content_toogle justify-between  items-center p-[10px] ">
                 {!menuOpen?(<BiMenuAltRight size={25} color='#ffda73'  onClick={menuHandler}/>):""}
-                <p className='w-full text-[#ffda73] flex justify-center text-center text-[20px] font-bold'><i>{name}</i></p>
+                <p className='w-full text-[#ffda73] flex justify-center text-center text-[20px] font-bold'><img src='/image.png' width={100} alt='Logo'/></p>
                 <Link to='/cart' className={`relative ${currentcolor('/cart')} p-[1em] flex items-center   hover:bg-white hover:text-[#0077b6]`}>
                     <FiShoppingCart  color='#ffda73' className='w-[24px] h-[24px]' /> 
                     <div className='absolute right-0 top-[10px] bg-red-600 w-[20px] h-[20px] text-white items-center justify-center flex font-bold rounded-full p-[5px]'>{cart.length<1?0:cart.length}</div>
